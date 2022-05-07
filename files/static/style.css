@@ -1,10 +1,104 @@
 body {
-    margin: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway, sans-serif !important;
 }
 
 
+.product {
+    position: absolute;
+    width: 1110px;
+    height: 50px;
+    left: 245px;
+    top: 30px;
+}
+
+.main_nav_btn {
+    color: #6E9C9F;
+}
+
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+    font-family: Raleway, sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+header.sticky {
+    background: #fff;
+    padding: 3rem 10rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav_logo_womazing {
+    padding-right: 6rem;
+}
+
+.black_btn_nav {
+    padding-right: 3.5rem;
+    color: #000;
+}
+
+.black_btn_nav_cont {
+    padding-right: 6rem;
+    color: #000;
+}
+
+.phone_logo {
+    padding-right: 0.6rem;
+}
+
+.number_phone {
+    padding-right: 5rem;
+    color: #000;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    top: 100%;
+    background: #F1EADC;
+    font-family: Raleway, sans-serif;
+}
+
+.flex__columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex__column {
+    padding: 2rem 5.5rem;
+}
+
+.footer__menu {
+    margin-left: 2rem;
+}
+
+.btns {
+    color: #111111;
+}
+
+.main_footer_btn {
+    color: #6E9C9F;
+!important;
+    font-weight: 700;
+}
+
+.black_btn {
+    color: #000;
+}
+
+.margin__left {
+    margin-left: 9.5rem;
+}
+
+.hat {
     padding: 40px 128px;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
@@ -55,7 +149,7 @@ header {
     top: 508px;
 }
 
-.product {
+.product_list {
     padding: 128px;
     font-family: 'Raleway', sans-serif;
 
@@ -152,89 +246,33 @@ header {
     color: #6E9C9F;
 }
 
-.product {
-    position: absolute;
-    width: 1110px;
-    height: 10px;
-    left: 245px;
-    top: 30px;
+.btn {
+    padding: 1.5rem 5rem;
+    background: #6E9C9F;
+    color: #fff;
 }
 
-.main_nav_btn {
-    color: #6E9C9F;
+
+.hover_link:hover {
+    opacity: 0.3;
+    transition: 0.3s;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.5s;
-    font-family: Raleway, sans-serif;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.nav_logo_womazing {
-    padding-right: 7rem;
-}
-
-.black_btn_nav {
-    padding-right: 3.5rem;
-    color: #000;
-}
-
-.black_btn_nav_cont {
-    padding-right: 6rem;
-    color: #000;
-}
-
-.phone_logo {
-    padding-right: 0.6rem;
-}
-
-.number_phone {
-    padding-right: 5rem;
-    color: #000;
-}
-
-.footer {
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    background: #F1EADC;
-    font-family: Raleway, sans-serif;
-}
-
-.flex__columns {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.flex__column {
-    padding: 2rem 5.5rem;
-}
-
-.footer__menu {
-    margin-left: 2rem;
-}
-
-.btns {
-    color: #111111;
-}
-
-.main_footer_btn {
-    color: #6E9C9F;!important;
+.quantity {
+    display: inline-block;
     font-weight: 700;
+    padding-right: 10px;
+
 }
 
-.black_btn {
-    color: #000;
+.arrows {
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    transition: .1s;
 }
 
-.margin__left {
-    margin-left: 9.5rem;
+.arrows:hover {
+    opacity: .6;
 }

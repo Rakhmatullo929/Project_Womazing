@@ -5,7 +5,7 @@
     <div class="half_page_light_warning"></div>
     <section class="header_nav">
         <!--header-->
-        <header>
+        <hat class="hat">
             <div class="columns">
                 <div class="column mx-5 offer_1 has-text-centered">
                     <br><br><br><br><br><br><br><br><br><br><br>
@@ -16,44 +16,38 @@
                         сезоне. Время исследовать.</p><br> <br>
                     <div class="double__btn__container">
                         <a href="" class="btn__down">
-{#                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" viewBox="0 0 16 29"#}
-{#                                 fill="none">#}
-{#                                <path d="M8 0V28M8 28L1 20.8108M8 28L15 20.8108" stroke="#6E9C9F"/>#}
-{#                            </svg>#}
-                            <img src="{% static 'uploads/Vector 1 (1).svg' %}" alt="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" viewBox="0 0 16 29"
+                                 fill="none">
+                                <path d="M8 0V28M8 28L1 20.8108M8 28L15 20.8108" stroke="#6E9C9F"></path>
+                            </svg>
                         </a>
                         <a href="" class="btn">Открыть магазин</a>
                     </div>
                 </div>
                 <div class="column">
-                    <p class="main_img"><img src="{% static 'uploads/Фото%20главное.svg' %}" alt="header image"></p>
-                    <p class="second_img"><img src="{% static 'uploads/Фото%20вторичное.svg' %}" alt=""></p>
-                    <p class="third_img"><img src=" {% static 'uploads/Фото%20третьестепенное.svg' %}" alt=""></p>
+                    <p class="main_img"><img src="{% static 'Фото%20главное.svg' %}" alt="header image"></p>
+                    <p class="second_img"><img src="{% static 'Фото%20вторичное.svg' %}" alt=""></p>
+                    <p class="third_img"><img src="{% static 'Фото%20третьестепенное.svg' %}" alt=""></p>
                 </div>
             </div>
-        </header>
+        </hat>
     </section>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!--Main content-->
-    <section class="product">
+    <section class="product_list">
         <div class="container">
             <h1 class="title pl-6">Новая коллекция</h1>
             <div class="flex">
-                <div class="flex-box">
-                    <img src=" {% static 'uploads/Фото%20товара.svg' %}" alt="">
-                    <h1 class="title has-text-centered">Футболка USA</h1>
-                    <p class="price has-text-centered"><span class="price_sale">$229</span> $129</p>
-                </div>
-                <div class="flex-box">
-                    <img src=" {% static 'uploads/Фото%20товара%20(1).svg' %}" alt="">
-                    <h1 class="title has-text-centered">Купальник Glow</h1>
-                    <p class="price has-text-centered">$129</p>
-                </div>
-                <div class="flex-box">
-                    <img src=" {% static 'uploads/Фото%20товара%20(2).svg' %}" alt="">
-                    <h1 class="title has-text-centered">Свитшот Sweet Shot</h1>
-                    <p class="price has-text-centered">$129</p>
-                </div>
+                {% for product in products %}
+                    <div class="flex-box">
+                        <a href="" class="hover_link">
+                            <img src="{{product.image.url}}" alt="">
+                        </a>
+                        <a href=""><h1 class="title has-text-centered">{{product.title}}</h1></a>
+                        <p class="price has-text-centered">{{ product.price }}</p>
+                    </div>
+                {% endfor %}
+{#            <span class="price_sale">$229</span>#}
             </div>
             <br><br>
             <div class="container__btn__hover has-text-centered">
@@ -66,21 +60,21 @@
         <h1 class="title pl-6">Что для нас важно</h1><br><br>
         <div class="flex__box">
             <div class="flex__x"><br>
-                <img src=" {% static 'uploads/Frame%2016.svg' %}" alt=""><br><br>
+                <img src="{% static 'Frame%2016.svg' %}" alt=""><br><br>
                 <p class="title">Качество</p><br>
                 <p class="subtitle">Наши профессионалы работают на <br> лучшем оборудовании для пошива <br> одежды
                     беспрецедентного
                     <br> качества</p>
             </div>
             <div class="flex__x">
-                <img src=" {% static 'uploads/Frame%2016%20(1).svg' %}" alt=""><br><br>
+                <img src="{% static 'Frame%2016%20(1).svg' %}" alt=""><br><br>
                 <p class="title">Скорость</p><br>
                 <p class="subtitle">Благодаря отлаженной системе <br> Womazing мы можем отшивать до <br> 20-ти единиц
                     продукции в наших
                     <br> собственных цехах</p>
             </div>
             <div class="flex__x">
-                <img src=" " alt=""><br><br>
+                <img src="{% static 'Frame%2016%20(2).svg' %}" alt=""><br><br>
                 <p class="title">Ответственность</p><br>
                 <p class="subtitle">Мы заботимся о людях и планете. <br>Безотходное производство и <br>комфортные
                     условия
@@ -95,7 +89,7 @@
         <h1 class="title is-1 has-text-weight-medium">Команда мечты Womazing</h1>
         <div class="columns">
             <div class="column">
-                <img src=" {% static 'uploads/adam-winger-fI-TKWjKYls-unsplash%201.svg' %}" alt="">
+                <img src="{% static 'adam-winger-fI-TKWjKYls-unsplash%201.svg' %}" alt="">
             </div>
             <div class="column is-3">
                 <p class="title is-4">Для каждой</p><br>
@@ -107,4 +101,22 @@
             </div>
         </div>
     </section>
+    <br><br><br><br><br>
 {% endblock %}
+
+
+{#<div class="flex-box">#}
+{#    <a href="" class="hover_link">#}
+{#        <img src="{% static 'Фото%20товара%20(1).svg' %}" alt="">#}
+{#    </a>#}
+{#    <a href=""><h1 class="title has-text-centered">Купальник Glow</h1></a>#}
+{#    <p class="price has-text-centered">$129</p>#}
+{##}
+{#</div>#}
+{#<div class="flex-box">#}
+{#    <a href="" class="hover_link">#}
+{#        <img src="{% static 'Фото%20товара%20(2).svg' %}" alt="">#}
+{#    </a>#}
+{#    <a href=""><h1 class="title has-text-centered">Свитшот Sweet Shot</h1></a>#}
+{#    <p class="price has-text-centered">$129</p>#}
+{#</div>#}

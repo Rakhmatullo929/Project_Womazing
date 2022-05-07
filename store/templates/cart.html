@@ -1,0 +1,85 @@
+{% extends 'base_layout.html' %}
+{% load static from static %}
+
+
+{% block cart %}
+    <div class="card mb-4 p-4 has-text-weight-bold is-size-4">
+        <a class="button has-text-left is-danger" href="{% url 'store:products' %}">Back to main page</a>
+        {% if cart_items %}
+            <a href="{% url 'store:create_order' %}" class="button has-text-right is-info">Checkout</a>
+        {% endif %}
+        <hr>
+        <div class="columns has-text-centered">
+            <div class="column">
+                <div class="content">Items: {{ total_quantity }}</div>
+            </div>
+            <div class="column">
+                <div class="content">Total: {{ total_price }} sum</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-5">
+        <div class="content">
+            {% if cart_items %}
+                <table class="table has-text-centered">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cart_items %}
+                        <td>
+                            <a href='{% url 'store:delete_cart_item' item.pk %}'
+                               style="font-size: 20px; color: black">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </a>
+                        </td>
+                        <tr>
+                            <td>
+                                <img src="{{ item.product.thumb.url }}" alt="" width="100" height="100">
+                            </td>
+                            <td>{{ item }}</td>
+                            <td>{{ item.product.price }} sum</td>
+                            <div class="columns is-vcentered is-centered">
+                                <div class="column is-1">
+                                    {{ item.quantity }}
+                                    <div class="quantity ml-3">
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
+                                            <img src="{% static 'uploads/arrow-up.png' %}" class="arrows" alt="">
+                                        </a>
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
+                                            <img src="{% static 'uploads/arrow-down.png' %}" class="arrows" alt="">
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="column is-1">
+                                    <div class="quantity">
+                                        <a href="{% url 'shop:edit_cart_item' item.id %}?action=add">
+                                            <h1 class="title">+</h1>
+                                        </a>
+                                        <a href="{% url 'shop:edit_cart_item' item.id %}?action=take">
+                                            <h1 class="title">-</h1>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        <td>{{ item.total_price }} sum</td>
+                    {% endfor %}
+
+            {% else %}
+                <p class="title has-text-centered">Nothing added</p>
+            {% endif %}
+    </div>
+{% endblock %}
