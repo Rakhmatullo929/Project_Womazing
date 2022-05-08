@@ -9,3 +9,6 @@ class SlugAdmin(admin.ModelAdmin):
 
 admin.site.register(Product),
 admin.site.register(CartItem),
+admin.site.register(Category),
+admin.site.register(Type),
+admin.site.register(Application),

@@ -252,10 +252,24 @@ header.sticky {
     color: #fff;
 }
 
+.hover_link {
+    opacity: 1;
+}
 
 .hover_link:hover {
     opacity: 0.3;
     transition: 0.3s;
+    color: rgba(110, 156, 159, 0.77);
+/*}*/
+/*.hover_link {*/
+/*    transition: filter .3s;*/
+/*    -webkit-filter: grayscale(2%);*/
+/*    filter: grayscale(2%);*/
+/*}*/
+
+/*.hover_link:hover {*/
+/*    -webkit-filter: #6E9C9f;*/
+/*    filter: grayscale(99%);*/
 }
 
 .quantity {

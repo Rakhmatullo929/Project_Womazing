@@ -1,94 +1,99 @@
+{% extends 'base_layout.html' %}
 {% load static %}
 
-<section class="section ">
-    <div class="container ">
-        <h1 class="title">Контакты</h1>
-        <p class="subtitle is-6 mt-3">Главная – <span
-                class="has-text-grey-light">Контакты</span></p>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-        <div style="overflow:hidden;width: 1330px;position: relative;">
-            <iframe width="1330" height="476"
-                    src="https://maps.google.com/maps?width=1330&amp;height=476&amp;hl=en&amp;q=Moscow%2C%20Russia+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"
-                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-            <div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
-                <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a
-                        href="https://embedgooglemaps.com/ru/">embedgooglemaps RU</a> & <a
-                        href="https://dagenscasino.se/">dagenscasino.se</a></small></div>
-            <style>#gmap_canvas img {
-                max-width: none !important;
-                background: none !important
-            }</style>
+
+{% block contact %}
+    <br><br><br>
+    <section class="section ">
+        <div class="container ">
+            <h1 class="title">Контакты</h1>
+            <p class="subtitle is-6 mt-3">Главная – <span
+                    class="has-text-grey-light">Контакты</span></p>
         </div>
-        <br/>
-    </div>
-</section>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div style="overflow:hidden;width: 1330px;position: relative;">
+                <iframe width="1330" height="476"
+                        src="https://maps.google.com/maps?width=1330&amp;height=476&amp;hl=en&amp;q=Moscow%2C%20Russia+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
+                    <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a
+                            href="https://embedgooglemaps.com/ru/">embedgooglemaps RU</a> & <a
+                            href="https://dagenscasino.se/">dagenscasino.se</a></small></div>
+                <style>#gmap_canvas img {
+                    max-width: none !important;
+                    background: none !important
+                }</style>
+            </div>
+            <br/>
+        </div>
+    </section>
 
 
-<nav class="level">
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="title is-6">Телефон</p>
-            <p class="title is-6">+7 (495) 823-54-12</p>
-        </div>
-    </div>
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="title is-6">E-mail</p>
-            <p class="title is-6">info@sitename.com</p>
-        </div>
-    </div>
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="title is-6">Адрес</p>
-            <p class="title is-6">г. Москва, 3-я улица Строителей, 25</p>
-        </div>
-    </div>
-</nav>
-
-<section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-3">
-                <form action="post" class="form">
-                    <div class="field">
-                        <label class="label">Имя</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="text" placeholder="Имя">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">E-mail</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="email" placeholder="Е-mail">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Телефон</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="number" placeholder="+998912345678">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Сообщение</label>
-                        <div class="control">
-                            <label>
-                                <textarea class="textarea" placeholder="Коментарии"></textarea>
-                            </label>
-                        </div>
-                    </div>
-                    <br>
-                    <a href="" class="btn">Отправить</a>
-                </form>
+    <nav class="level">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="title is-6">Телефон</p>
+                <p class="title is-6">+7 (495) 823-54-12</p>
             </div>
         </div>
-    </div>
-</section>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="title is-6">E-mail</p>
+                <p class="title is-6">info@sitename.com</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="title is-6">Адрес</p>
+                <p class="title is-6">г. Москва, 3-я улица Строителей, 25</p>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <form action="post" class="form">
+                        <div class="field">
+                            <label class="label">Имя</label>
+                            <div class="control">
+                                <label>
+                                    <input class="input" type="text" placeholder="Имя">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">E-mail</label>
+                            <div class="control">
+                                <label>
+                                    <input class="input" type="email" placeholder="Е-mail">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Телефон</label>
+                            <div class="control">
+                                <label>
+                                    <input class="input" type="number" placeholder="+998912345678">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Сообщение</label>
+                            <div class="control">
+                                <label>
+                                    <textarea class="textarea" placeholder="Коментарии"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <a href="" class="btn">Отправить</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

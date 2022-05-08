@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block categories %}
+
+    <section class="section ">
+        <div class="container ">
+            <h1 class="title">Магазин</h1>
+            <p class="subtitle is-6 mt-3">Главная – <span
+                    class="has-text-grey-light">Магазин</span></p>
+        </div>
+    </section>
+    <aside class="nav">
+
+        <ul class="menu-list">
+            {% for category in categories %}
+                <li>
+                    <a href="{% url 'store:products' %}?category={{ category.pk }}" class="">
+                        {{ category }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+{% endblock %}

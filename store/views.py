@@ -35,8 +35,8 @@ def cart(request):
 
 
 def delete_cart_item(request, pk):
-    cart_item = CartItem.objects.get(pk=pk).delete()
-    return redirect('store:cart')
+    cart_item = CartItem.objects.filter(pk=pk)
+    return redirect('store:cart', {'cart_item': cart_item})
 
 
 def edit_cart_item(request, pk):
@@ -58,3 +58,8 @@ def edit_cart_item(request, pk):
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
     return render(request, 'product_detail.html', {'product': product})
+
+
+def order_registration(request):
+    contact = Product.objects.all()
+    return render(request, 'order_registration.html', {'contact': contact})

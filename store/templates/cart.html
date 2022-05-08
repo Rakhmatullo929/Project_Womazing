@@ -43,7 +43,7 @@
                         </td>
                         <tr>
                             <td>
-                                <img src="{{ item.product.thumb.url }}" alt="" width="100" height="100">
+                                <img src="{{ item.product.image.url }}" alt="" width="100" height="100">
                             </td>
                             <td>{{ item }}</td>
                             <td>{{ item.product.price }} sum</td>
@@ -62,10 +62,10 @@
                                 </div>
                                 <div class="column is-1">
                                     <div class="quantity">
-                                        <a href="{% url 'shop:edit_cart_item' item.id %}?action=add">
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
                                             <h1 class="title">+</h1>
                                         </a>
-                                        <a href="{% url 'shop:edit_cart_item' item.id %}?action=take">
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
                                             <h1 class="title">-</h1>
                                         </a>
                                     </div>
