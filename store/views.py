@@ -63,3 +63,8 @@ def product_detail(request, pk):
 def order_registration(request):
     contact = Product.objects.all()
     return render(request, 'order_registration.html', {'contact': contact})
+
+
+def categories_store(request):
+    products = Product.objects.all()
+    return render(request, 'categories_store.html', {'products': products})

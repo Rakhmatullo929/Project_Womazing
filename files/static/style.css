@@ -290,3 +290,10 @@ header.sticky {
 .arrows:hover {
     opacity: .6;
 }
+
+
+.product_store{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

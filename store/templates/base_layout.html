@@ -44,6 +44,9 @@
 {% block contact %}
 {% endblock %}
 
+{% block categories %}
+{% endblock %}
+
 
 <footer class="footer has-background-warning-light is-6">
     <div class="container">
@@ -90,5 +93,12 @@
 <script type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+    let toggleModal = () => {
+        document.querySelector('.modal').classList.toggle('is-active')
+    }
+</script>
 </body>
 </html>
