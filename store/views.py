@@ -68,3 +68,7 @@ def order_registration(request):
 def categories_store(request):
     products = Product.objects.all()
     return render(request, 'categories_store.html', {'products': products})
+
+
+def about_brand(request):
+    return render(request, 'about_brand.html')

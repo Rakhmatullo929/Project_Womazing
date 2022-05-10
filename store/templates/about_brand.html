@@ -1,0 +1,63 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <section class="section is-large">
+        <div class="container s_sd">
+            <div>
+                <h1 class="title is-1 has-text-weight-normal mb-5">О бренде</h1>
+                <p class="subtitle is-6 mt-3">Главная – <span class="has-text-grey-light">о бренде</span></p>
+            </div>
+            <br><br><br>
+            <br><br><br>
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <figure class="image ">
+                        <img src="{% static 'sonnie.svg' %}" alt="">
+                    </figure>
+                </div>
+                <div class="column ml-6">
+                    <h1 class="title">Идея и женщина</h1>
+                    <p class="subtitle is-6 mt-3 "> Womazing была основана в 2010-ом и стала одной из самых успешных
+                        компаний нашей
+                        страны. Как и многие итальянские фирмы, Womazing остаётся семейной компанией, хотя ни один из
+                        членов семьи не является модельером. <br> <br>
+                        Мы действуем по успешной формуле, прибегая к услугам известных модельеров для создания своих
+                        коллекций. Этот метод был описан критиком моды Колином Макдауэллом как форма дизайнерского
+                        со-творчества, характерная для ряда итальянских prêt-a-porter компаний. </p>
+                </div>
+            </div>
+            <br><br><br>
+            <br><br><br>
+            <div class="columns is-vcentered">
+                <div class="column ml-4">
+                    <h1 class="title">Магия в деталях</h1>
+                    <p class="subtitle is-6 mt-3 ">Первый магазин Womazing был открыт в маленьком городке на севере
+                        страны в
+                        2010-ом году. Первая коллекция состояла из двух пальто и костюма, которые были копиями парижских
+                        моделей. <br>
+                        <br>
+                        Несмотря на то, что по образованию основательница была адвокатом, ее семья всегда была тесно
+                        связана
+                        с шитьём (прабабушка основательницы шила одежду для женщин, а мать основала профессиональную
+                        школу
+                        кроя и шитья). Стремление производить одежду для масс несло в себе большие перспективы, особенно
+                        в
+                        то время, когда высокая мода по-прежнему доминировала, а рынка качественного prêt-a-porter
+                        попросту
+                        не существовало. </p>
+                </div>
+                <div class="column">
+                    <figure class="image ">
+                        <img src="{% static 'gbarkz.svg' %}" alt="">
+                    </figure>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="has-text-centered">
+                <a href="" class="btn__centered">Перейти на главную</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

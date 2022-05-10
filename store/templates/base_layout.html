@@ -19,10 +19,10 @@
     <section class="product">
         <menu class="menu">
             <div class="container_fluid">
-                <a href="" class="nav_logo_womazing"><img src="{% static 'womazing_logo.svg' %}" alt=""></a>
-                <a href="" class="black_btn_nav"><span class="main_nav_btn has-text-weight-bold">Главная</span></a>
+                <a href="{% url 'store:main' %}" class="nav_logo_womazing"><img src="{% static 'womazing_logo.svg' %}" alt=""></a>
+                <a href="{% url 'store:main' %}" class="black_btn_nav"><span class="main_nav_btn has-text-weight-bold">Главная</span></a>
                 <a href="" class="black_btn_nav">Магазин</a>
-                <a href="" class="black_btn_nav">О бренде</a>
+                <a href="{% url 'store:about_brand' %}" class="black_btn_nav">О бренде</a>
                 <a href="{% url 'store:order_registration' %}" class="black_btn_nav_cont">Контакты</a>
                 <a href="" class="phone_logo"><img src="{% static 'telephone1.svg' %}" alt=""></a>
                 <a href="" class="number_phone">+7(495)823-54-12</a>
