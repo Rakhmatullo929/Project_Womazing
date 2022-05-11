@@ -1,46 +1,50 @@
-<button class="button is-info is-large" onclick="toggleModal()">Modal</button>
+{% extends 'base_layout.html' %}
+{% load static %}
 
-<!--Модальное окно-->
-<div class="modal">
-    <div class="modal-background backcolor"></div>
-    <div class="modal-content">
-        <header class="modal-card-head">
-            <p class="modal-card-title has-text-centered">Заказать обратный звонок</p>
-        </header>
-        <section class="modal-card-body">
-            <!-- Content ... -->
-                    <div class="field">
-                        <label class="label">Имя</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="text" placeholder="Name">
-                            </label>
-                        </div>
+
+{% block content %}
+    <button class="button is-info is-large" onclick="toggleModal()">Modal</button>
+
+    <!--Модальное окно-->
+    <div class="modal">
+        <div class="modal-background backcolor"></div>
+        <div class="modal-content">
+            <section class="modal-card-body">
+                <!-- Content ... -->
+
+                <p class="modal-card-title has-text-centered">Заказать обратный звонок</p>
+                <div class="field">
+                    <label class="label has-text-weight-medium">Имя</label>
+                    <div class="control">
+                        <label>
+                            {{ form.name }}
+                        </label>
                     </div>
-                    <div class="field">
-                        <label class="label">E-mail</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="email" placeholder="qwerty@gmail.com">
-                            </label>
-                        </div>
+                </div>
+                <div class="field">
+                    <label class="label">E-mail</label>
+                    <div class="control">
+                        <label>
+                            {{ form.email }}
+                        </label>
                     </div>
-                    <div class="field">
-                        <label class="label">Телефон</label>
-                        <div class="control">
-                            <label>
-                                <input class="input" type="number" placeholder="Text input">
-                            </label>
-                        </div>
+                </div>
+                <div class="field">
+                    <label class="label">Телефон</label>
+                    <div class="control">
+                        <label>
+                            {{ form.number }}
+                        </label>
                     </div>
-        </section>
-        <footer class="modal-card-foot has-text-centered is-centered">
-            <div class="has-text-centered is-centered">
-                <a href="" class="btn has-text-centered" onclick="toggleModal()">Заказать товар</a>
-            </div>
-        </footer>
+                </div>
+                <br>
+                <div class="has-text-centered">
+                    <a href="" class="btn has-text-centered" onclick="toggleModal()">Заказать товар</a>
+                </div>
+                <br>
+            </section>
+            <button aria-label="close" class="modal-close is-large" onclick="toggleModal()"></button>
+        </div>
     </div>
-    <button aria-label="close" class="modal-close is-large" onclick="toggleModal()"></button>
-</div>
-
+{% endblock %}
 

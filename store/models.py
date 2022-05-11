@@ -46,10 +46,11 @@ class Type(models.Model):
 
 
 class Application(models.Model):
-    client_name = models.CharField(max_length=20)
-    client_last_name = models.CharField(null=True, max_length=20)
-    client_phone_number = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    email = models.EmailField(null=True)
+    number = models.CharField(max_length=20)
+    message = models.TextField(max_length=255)
 
     def __str__(self):
-        return F'{self.client_name} {self.client_last_name} {self.client_phone_number}'
+        return F'{self.name} {self.email} {self.number} {self.message}'
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from store import forms
 from store.models import Product
 
 
@@ -9,13 +10,13 @@ def base_layout(request):
     return render(request, 'base_layout.html', )
 
 
-def about(request):
+def home(request):
     products = Product.objects.all()[:3]
 
     context = {
         'products': products
     }
-    return render(request, 'about.html', context)
+    return render(request, 'home.html', context)
 
 
 class CartItem:
@@ -60,14 +61,22 @@ def product_detail(request, pk):
     return render(request, 'product_detail.html', {'product': product})
 
 
-def order_registration(request):
+def contact_order(request):
     contact = Product.objects.all()
-    return render(request, 'order_registration.html', {'contact': contact})
+    form = forms.ApplicationForms(request.POST or None)
+    is_success = False
+    if request.method == 'POST' and form.is_valid():
+        instance = form.save(commit=False)
+        is_success = True
+        instance.contact = contact
+        instance.save()
+        form = forms.ApplicationForms()
+    return render(request, 'contact_order.html', {'contact': contact, 'form': form, 'is_success': is_success})
 
 
-def categories_store(request):
+def shop(request):
     products = Product.objects.all()
-    return render(request, 'categories_store.html', {'products': products})
+    return render(request, 'shop.html', {'products': products})
 
 
 def about_brand(request):

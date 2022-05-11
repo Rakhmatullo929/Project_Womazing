@@ -246,11 +246,19 @@ header.sticky {
     color: #6E9C9F;
 }
 
-.btn {
-    padding: 1.5rem 5rem;
-    background: #6E9C9F;
-    color: #fff;
+
+.btn__about:hover {
+    color: #6E9C9F;
+    text-decoration: none;
+    line-height: 1.4em;
 }
+
+
+/*.btn {*/
+/*    padding: 1.5rem 5rem;*/
+/*    background: #6E9C9F;*/
+/*    color: #fff;*/
+/*}*/
 
 .hover_link {
     opacity: 1;
@@ -317,4 +325,43 @@ header.sticky {
 
 td {
     border: none !important;
+}
+
+
+.btn_ordered {
+    padding: 1.2rem 2.5rem;
+    background: #6E9C9F;
+    color: white;
+}
+
+
+.form {
+    padding: 20px;
+}
+
+.form label {
+    color: black;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.form input {
+    padding: .7rem 2rem;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+}
+
+.form textarea {
+    padding: .3em 2rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+
+.btn_submit_form {
+    padding: 1.2rem 5rem;
+    background-color: #6E9C9F;
+    color: white !important;
 }

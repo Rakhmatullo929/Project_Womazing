@@ -34,9 +34,8 @@
     </section>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!--Main content-->
-    <section class="product_list">
-        <div class="container">
-            <h1 class="title pl-6">Новая коллекция</h1>
+    <section class="product_list is-centered">
+            <h1 class="title pl-5">Новая коллекция</h1>
             <div class="flex">
                 {% for product in products %}
                     <div class="flex-box">
@@ -53,7 +52,6 @@
             <div class="container__btn__hover has-text-centered">
                 <a href="" class="btn__centered">Открыть магазин</a>
             </div>
-        </div>
     </section>
 
     <section class="quality">
@@ -97,7 +95,7 @@
                     <br><br>Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства
                     каждой
                     девушки.</p>
-                <a href="" class="btn__about has-text-weight-medium">Подробнее о бренде</a>
+                <a href="{% url 'store:about_brand' %}" class="btn__about has-text-weight-medium">Подробнее о бренде</a>
             </div>
         </div>
     </section>
