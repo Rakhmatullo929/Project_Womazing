@@ -35,23 +35,26 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!--Main content-->
     <section class="product_list is-centered">
-            <h1 class="title pl-5">Новая коллекция</h1>
-            <div class="flex">
-                {% for product in products %}
-                    <div class="flex-box">
-                        <a href="" class="hover_link">
-                            <img src="{{product.image.url}}" alt="">
-                        </a>
-                        <a href=""><h1 class="title has-text-centered">{{product.title}}</h1></a>
-                        <p class="price has-text-centered">{{ product.price }}</p>
+        <h1 class="title">Новая коллекция</h1>
+        <div class="columns">
+            {% for product in products %}
+                <div class="column">
+                    <a href="" class="hover_link">
+                        <img src="{{ product.image.url }}" alt="">
+                    </a>
+                    <br>
+                    <br>
+                    <div class="has-text-centered">
+                        <h1 class="title has-text-weight-medium is-5">{{ product.title }}</h1>
+                        <p class="price subtitle is-6 mt-4">{{ product.price }}</p>
                     </div>
-                {% endfor %}
-{#            <span class="price_sale">$229</span>#}
-            </div>
-            <br><br>
-            <div class="container__btn__hover has-text-centered">
-                <a href="" class="btn__centered">Открыть магазин</a>
-            </div>
+                </div>
+            {% endfor %}
+        </div>
+        <br><br>
+        <div class="container__btn__hover has-text-centered">
+            <a href="" class="btn__centered">Открыть магазин</a>
+        </div>
     </section>
 
     <section class="quality">

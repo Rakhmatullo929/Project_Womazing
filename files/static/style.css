@@ -365,3 +365,39 @@ td {
     background-color: #6E9C9F;
     color: white !important;
 }
+
+
+@media screen and (max-width: 1440px) {
+    .main_img {
+        position: absolute;
+        width: 410px;
+        height: 646px;
+        left: 880px;
+        top: 120px;
+    }
+
+    .second_img {
+        position: absolute;
+        width: 197px;
+        height: 197px;
+        left: 1200px;
+        top: 243px;
+    }
+
+    .third_img {
+        position: absolute;
+        width: 190px;
+        height: 318px;
+        left: 760px;
+        top: 508px;
+    }
+
+    .half_page_light_warning {
+        position: absolute;
+        background: #F1EADC;
+        width: 705px;
+        height: 826px;
+        left: 820px;
+        top: 0;
+    }
+}
