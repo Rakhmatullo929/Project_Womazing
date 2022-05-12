@@ -19,10 +19,6 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-class CartItem:
-    objects = None
-
-
 def cart(request):
     cart_items = CartItem.objects.filter(customer=request.user)
     total_price = sum([item.total_price() for item in cart_items])
@@ -43,17 +39,16 @@ def delete_cart_item(request, pk):
 def edit_cart_item(request, pk):
     cart_item = CartItem.objects.get(pk=pk)
     action = request.GET.get('action')
-
     if action == 'take' and cart_item.quantity > 0:
         if cart_item.quantity == 1:
             cart_item.delete()
-            return redirect('shop:cart')
+            return redirect('store:cart')
         cart_item.quantity -= 1
         cart_item.save()
-        return redirect('shop:cart')
+        return redirect('store:cart')
     cart_item.quantity += 1
     cart_item.save()
-    return redirect('shop:cart')
+    return redirect('store:cart')
 
 
 def product_detail(request, pk):
@@ -62,16 +57,13 @@ def product_detail(request, pk):
 
 
 def contact_order(request):
-    contact = Product.objects.all()
     form = forms.ApplicationForms(request.POST or None)
     is_success = False
     if request.method == 'POST' and form.is_valid():
-        instance = form.save(commit=False)
         is_success = True
-        instance.contact = contact
-        instance.save()
+        form.save()
         form = forms.ApplicationForms()
-    return render(request, 'contact_order.html', {'contact': contact, 'form': form, 'is_success': is_success})
+    return render(request, 'contact_order.html', {'form': form, 'is_success': is_success})
 
 
 def shop(request):

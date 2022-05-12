@@ -51,12 +51,8 @@
                                 <div class="column is-1">
                                     {{ item.quantity }}
                                     <div class="quantity ml-3">
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
-                                            <img src="{% static 'uploads/arrow-up.png' %}" class="arrows" alt="">
-                                        </a>
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
-                                            <img src="{% static 'uploads/arrow-down.png' %}" class="arrows" alt="">
-                                        </a>
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add"></a>
+                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">-</a>
                                     </div>
 
                                 </div>

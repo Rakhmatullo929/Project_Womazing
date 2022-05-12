@@ -364,7 +364,9 @@ td {
     padding: 1.2rem 5rem;
     background-color: #6E9C9F;
     color: white !important;
+    border: none;
 }
+
 
 
 @media screen and (max-width: 1440px) {

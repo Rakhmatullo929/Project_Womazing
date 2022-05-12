@@ -8,9 +8,14 @@ class Product(models.Model):
     title = models.CharField(max_length=20)
     price = models.CharField(max_length=10)
     image = models.FileField(null=True)
+    category = models.ForeignKey('store.Category', default=None, on_delete=models.CASCADE)
+    type = models.ForeignKey('store.Type', default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.title}, {self.price}'
+
+    class Meta:
+        db_table = 'store_products'
 
 
 class CartItem(models.Model):
@@ -46,11 +51,10 @@ class Type(models.Model):
 
 
 class Application(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, null=True)
     email = models.EmailField(null=True)
-    number = models.CharField(max_length=20)
-    message = models.TextField(max_length=255)
+    number = models.CharField(max_length=20, null=True)
+    message = models.TextField(max_length=255, null=True)
 
     def __str__(self):
         return F'{self.name} {self.email} {self.number} {self.message}'
-

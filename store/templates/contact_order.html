@@ -59,7 +59,7 @@
                     <form method="post" class="form">
                         <div class="field">
                             {% csrf_token %}
-                            <label class="label">Имя</label>
+                            <label class="label has-text-weight-medium">Имя</label>
                             <div class="control">
                                 <label>
                                     {{ form.name }}
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">E-mail</label>
+                            <label class="label has-text-weight-medium">E-mail</label>
                             <div class="control">
                                 <label>
                                     {{ form.email }}
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Телефон</label>
+                            <label class="label has-text-weight-medium">Телефон</label>
                             <div class="control">
                                 <label>
                                     {{ form.number }}
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Сообщение</label>
+                            <label class="label has-text-weight-medium">Сообщение</label>
                             <div class="control">
                                 <label>
                                     {{ form.message }}
@@ -91,15 +91,16 @@
                             </div>
                         </div>
                         <br><br>
-                        <a href="" class="btn_submit_form">Отправить</a>
+                        <button class="btn_submit_form">Отправить</button>
+                        <br><br>
+                        {% if is_success %}
+                            <div class="notification has-background-warning-light is-size-7 has-text-centered">
+                                Сообщение успешно отправлено
+                            </div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
-            {% if is_success %}
-                <div class="notification has-background-warning-light is-size-3 has-text-centered">
-                    Сообщение успешно отправлено
-                </div>
-            {% endif %}
             <br><br>
         </div>
     </section>
