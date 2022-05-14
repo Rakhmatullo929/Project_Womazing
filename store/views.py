@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from store import forms
-from store.models import Product
+from store.models import Product, CartItem
 
 
 # Create your views here.
@@ -17,6 +17,26 @@ def home(request):
         'products': products
     }
     return render(request, 'home.html', context)
+
+
+def products_list(request):
+    product_id = request.GET.get('product')
+    category = request.GET.get('category')
+    type = request.GET.get('type')
+    products = Product.objects.all()
+    if product_id:
+        product = Product.objects.get(pk=product_id)
+        cart_item = CartItem.objects.filter(product=product)
+        if not cart_item:
+            cart_item = CartItem.objects.create(customer=request.user, product=product, quantity=1)
+            cart_item.save()
+            return redirect('store:products')
+        for item in cart_item:
+            item.quantity += 1
+            item.save()
+    products = products.filter(category=category) if category else products
+    products = products.filter(type=type) if type else products
+    return render(request, 'home.html', {'products': products})
 
 
 def cart(request):

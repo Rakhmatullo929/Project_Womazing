@@ -4,7 +4,7 @@
 
 {% block cart %}
     <div class="card mb-4 p-4 has-text-weight-bold is-size-4">
-        <a class="button has-text-left is-danger" href="{% url 'store:products' %}">Back to main page</a>
+        <a class="button has-text-left is-danger" href="{% url 'store:product_detail' %}">Back to main page</a>
         {% if cart_items %}
             <a href="{% url 'store:create_order' %}" class="button has-text-right is-info">Checkout</a>
         {% endif %}
@@ -71,9 +71,8 @@
                         </tbody>
                         </table>
                         </div>
-                        <td>{{ item.total_price }} sum</td>
+                        <td>{{ item.total_price }} $</td>
                     {% endfor %}
-
             {% else %}
                 <p class="title has-text-centered">Nothing added</p>
             {% endif %}

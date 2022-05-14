@@ -1,0 +1,6 @@
+<div class="menu_lists">
+    {% for category in categories %}
+        <a href="{% url 'store:products' %}?category={{ category.pk }}"
+           class="button is-outlined is-black">{{ category }}</a>
+    {% endfor %}
+</div>

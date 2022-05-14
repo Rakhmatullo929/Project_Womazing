@@ -15,13 +15,13 @@
                         вот то, что вы искали в этом <br>
                         сезоне. Время исследовать.</p><br> <br>
                     <div class="double__btn__container">
-                        <a href="" class="btn__down">
+                        <a href="#product_list" onclick="toggleModal()" class="btn__down">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" viewBox="0 0 16 29"
                                  fill="none">
                                 <path d="M8 0V28M8 28L1 20.8108M8 28L15 20.8108" stroke="#6E9C9F"></path>
                             </svg>
                         </a>
-                        <a href="" class="btn">Открыть магазин</a>
+                        <a href="{% url 'store:shop' %}" class="btn">Открыть магазин</a>
                     </div>
                 </div>
                 <div class="column">
@@ -34,7 +34,7 @@
     </section>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!--Main content-->
-    <section class="product_list is-centered">
+    <section class="product_list is-centered" id="product_list">
         <h1 class="title">Новая коллекция</h1>
         <div class="columns">
             {% for product in products %}
@@ -53,7 +53,7 @@
         </div>
         <br><br>
         <div class="container__btn__hover has-text-centered">
-            <a href="" class="btn__centered">Открыть магазин</a>
+            <a href="{% url 'store:shop' %}" class="btn__centered">Открыть магазин</a>
         </div>
     </section>
 
@@ -96,8 +96,7 @@
                 <p class="title is-4">Для каждой</p><br>
                 <p class="subtitle is-5">Каждая девушка уникальна. Однако, мы схожи в миллионе мелочей.
                     <br><br>Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства
-                    каждой
-                    девушки.</p>
+                    каждой девушки.</p>
                 <a href="{% url 'store:about_brand' %}" class="btn__about has-text-weight-medium">Подробнее о бренде</a>
             </div>
         </div>

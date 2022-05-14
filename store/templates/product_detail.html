@@ -3,6 +3,9 @@
 
 
 {% block detail %}
+    <div class="product_detail_title">
+        <h1 class="title">{{ product.title }}</h1>
+    </div>
     <div class="section product-detail">
         <div class="columns is-flex is-align-items-center">
             <div class="column">
@@ -13,17 +16,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="content">
-                    <p class="title is-size-2">
-                        {{ product.title }}
-                        {% if product.is_new %}
-                            <span class="tag is-danger">New!</span>
-                        {% endif %}
-                        {% if product.is_discounted %}
-                            <span class="tag is-primary">Discount!</span>
-                        {% endif %}
-                    </p>
-                </div>
+
             </div>
         </div>
     </div>
