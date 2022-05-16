@@ -6,6 +6,10 @@
     <div class="product_detail_title">
         <h1 class="title">{{ product.title }}</h1>
     </div>
+    <div class="container ">
+        <p class="subtitle is-6 mt-3">Главная – Свитшоты - <span
+                class="has-text-grey-light">{{ product.title }}</span></p>
+    </div>
     <div class="section product-detail">
         <div class="columns is-flex is-align-items-center">
             <div class="column">
@@ -16,7 +20,14 @@
                 </div>
             </div>
             <div class="column">
-
+                <div class="content">
+                    <p class="title is-size-3 has-text-info">{{ product.price }}</p>
+                    <p class="title is-size-5 has-text-grey-light">Выберите размер</p>
+                    <p class="title">Выберите цвет</p>
+                    <a href="" class="btn_color"></a>
+                    <a href=""></a>
+                    <a href="{% url 'store:products' %}" class="button is-danger">Добавить в корзину</a>
+                </div>
             </div>
         </div>
     </div>

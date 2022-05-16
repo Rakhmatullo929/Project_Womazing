@@ -2,12 +2,8 @@
 {% load static from static %}
 
 
-{% block cart %}
+{% block cart %}<br><br><br><br>
     <div class="card mb-4 p-4 has-text-weight-bold is-size-4">
-        <a class="button has-text-left is-danger" href="{% url 'store:product_detail' %}">Back to main page</a>
-        {% if cart_items %}
-            <a href="{% url 'store:create_order' %}" class="button has-text-right is-info">Checkout</a>
-        {% endif %}
         <hr>
         <div class="columns has-text-centered">
             <div class="column">
@@ -50,11 +46,6 @@
                             <div class="columns is-vcentered is-centered">
                                 <div class="column is-1">
                                     {{ item.quantity }}
-                                    <div class="quantity ml-3">
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add"></a>
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">-</a>
-                                    </div>
-
                                 </div>
                                 <div class="column is-1">
                                     <div class="quantity">
@@ -73,8 +64,9 @@
                         </div>
                         <td>{{ item.total_price }} $</td>
                     {% endfor %}
-            {% else %}
-                <p class="title has-text-centered">Nothing added</p>
+                {% if cart_items %}
+                    <a href="{% url 'store:create_order' %}" class="button has-text-right is-info">Checkout</a>
+                {% endif %}
             {% endif %}
     </div>
 {% endblock %}

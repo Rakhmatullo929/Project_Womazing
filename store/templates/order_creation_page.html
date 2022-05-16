@@ -1,0 +1,58 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block content %} <br><br><br><br><br><br><br>
+    <section class="section">
+        <div class="container order_section">
+            <h1 class="title is-1">Оформление заказа</h1>
+            <p class="subtitle pl-2 is-6 mt-3">Главная – <span
+                    class="has-text-grey-light">Оформление заказа</span></p>
+        </div>
+        <br><br><br><br><br>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="order_row">
+                <div class="row_1">
+                    <form method="post" action="{% url 'store:create_order' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="title is-5">
+                            Данные покупателя
+                        </div>
+                        {% for field in form %}
+                            <div class="field">
+                                <label for="{{ field.id_for_label }}"
+                                       class="label has-text-weight-medium">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}<br>
+                        <button type="submit" class="btn_submit_form">Разместить заказ</button>
+                    </form>
+                </div>
+                <div class="row_2">
+                    <div class="title">Ваш заказ</div>
+                    <table class="table  has-text-weight-medium is-fullwidth">
+                        <thead>
+                        <td>Товар</td>
+                        <td>Всего</td>
+                        </thead>
+                        <tbody>
+                        {% for item in cart_items %}
+                            <tr>
+                                <td>{{ item }}</td>
+                                <td>{{ item.product.price }}</td>
+                            </tr>
+                            <tr>
+                                <td>x {{ item.quantity }}</td>
+                                <td>{{ item.total_price }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="notification is-2 has-background-warning-light">Итого {{ total_price }} </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -77,11 +77,11 @@ header.sticky {
 }
 
 .flex__column {
-    padding: 2rem 5.5rem;
+    padding: 2rem 5rem;
 }
 
 .footer__menu {
-    margin-left: 2rem;
+    margin-left: 2.5rem;
 }
 
 .btns {
@@ -99,7 +99,7 @@ header.sticky {
 }
 
 .margin__left {
-    margin-left: 9.5rem;
+    margin-left: 10rem;
 }
 
 .hat {
@@ -371,6 +371,25 @@ td {
     border: none;
 }
 
+.order_section {
+    padding-left: 9rem;
+}
+
+.order_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row_1 {
+    height: 800px;
+    width: 30%;
+    margin-left: -15rem;
+}
+
+.row_2 {
+    margin-left: 15rem;
+}
 
 
 @media screen and (max-width: 1440px) {

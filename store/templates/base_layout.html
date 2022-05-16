@@ -21,8 +21,7 @@
     <section class="product">
         <menu class="menu">
             <div class="container_fluid">
-                <a href="{% url 'store:home' %}" class="nav_logo_womazing"><img src="{% static 'womazing_logo.svg' %}"
-                                                                                alt=""></a>
+                <a href="{% url 'store:home' %}" class="nav_logo_womazing"><img src="{% static 'womazing_logo.svg' %}" alt=""></a>
                 <a href="{% url 'store:home' %}" class="black_btn_nav"><span class="main_nav_btn has-text-weight-bold">Главная</span></a>
                 <a href="{% url 'store:shop' %}" class="black_btn_nav">Магазин</a>
                 <a href="{% url 'store:about_brand' %}" class="black_btn_nav">О бренде</a>
@@ -44,7 +43,6 @@
 {% endblock %}
 
 {% block detail %}
-
 {% endblock %}
 
 {% block contact %}
@@ -56,6 +54,8 @@
 {% block callback %}
 {% endblock %}
 
+{% block cart %}
+{% endblock %}
 
 <footer class="footer has-background-warning-light is-6">
     <div class="container">
@@ -110,5 +110,9 @@
         document.querySelector('.modal').classList.toggle('is-active')
     }
 </script>
+
+<script type="module"
+src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
