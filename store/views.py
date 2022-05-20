@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from store import forms
-from store.models import Product, CartItem, Order, OrderProduct
+from .models import *
 
 
 # Create your views here.
@@ -21,6 +22,17 @@ def home(request):
 
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
+    product_id = request.GET.get('product')
+    if product_id:
+        product = Product.objects.get(pk=product_id)
+        cart_item = CartItem.objects.filter(product=product)
+        if not cart_item:
+            cart_item = CartItem.objects.create(customer=request.user, product=product, quantity=1)
+            cart_item.save()
+            return redirect('store:shop')
+        for item in cart_item:
+            item.quantity += 1
+            item.save()
     return render(request, 'product_detail.html', {'product': product})
 
 
@@ -35,7 +47,12 @@ def contact_order(request):
 
 
 def shop(request):
+    category = request.GET.get('category')
     products = Product.objects.all()
+    paginator = Paginator(products, 9)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+    products = products.filter(category=category) if category else products
     return render(request, 'shop.html', {'products': products})
 
 
@@ -104,8 +121,3 @@ def create_order(request):
         'total_price': total_price,
         'amount': amount,
         'form': form})
-
-
-def orders(request):
-    orders_list = Order.objects.filter(customer=request.user)
-    return render(request, 'order.html', {'orders': orders_list})

@@ -4,19 +4,70 @@
 
 
 {% block shop %}
-    <section class="section">
-        <div class="container mr-1 "><br><br><br>
+    <section class="section ">
+        <div class="container pading s_sd mr-2 "><br><br><br><br><br><br>
             <h1 class="title is-1 has-text-weight-medium">Магазин</h1>
             <p class="subtitle is-6 mt-3">Главная – <span
                     class="has-text-grey-light">Магазин</span></p>
         </div>
     </section>
-        <div class="column">
-            {% categories %}
+    <section class="section  is-large">
+        <div class="container  ml-4 s_sd">
+            <div class="column">
+                {% categories %}
+            </div>
+            <br><br><br>
+            <div>
+                <p class=" is-small"><span class="ml-3 has-text-grey-light">Показано: 9 из 12 товаров</span></p>
+            </div>
         </div>
+        <br><br>
+        <div class="flex_-columns">
+            {% for product in products %}
+                <div class="flex_-column">
+                    <a href="{% url 'store:product_detail' product.pk %}" class="hover_link">
+                        <img src="{{ product.image.url }}" alt="">
+                    </a>
+                    <br>
+                    <br>
+                    <div class="has-text-centered">
+                        <h1 class="title has-text-weight-medium is-5">{{ product.title }}</h1>
+                        <p class="price subtitle is-6 mt-4">{{ product.price }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="s_sd">
+            <p class=" is-small"><span class="ml-5 has-text-grey-light">Показано: 9 из 12 товаров</span></p>
+        </div>
+        <br><br><br>
+        <div class="buttons1">
+            <div class="pagination">
+            <span class="step-links">
+            {% if products.has_previous %}
+                <a href="?page={{ products.previous_page_number }}">
+                    <img class="img_vector" src="{% static 'Vector 1 (2).svg' %}" alt="">
+                </a>
+                <a class="pagination-link" aria-label="page" href="?page={{ products.next_previous_number }}">1</a>
+            {% endif %}
+                <span class="current">
+                    <a class="pagination-link has-background-black is-current" aria-label="page"
+                       aria-current="page"> {{ products.number }}</a>
+                </span>
+                {% if products.has_next %}
+                    <a class="pagination-link" aria-label="page" href="?page={{ products.next_page_number }}">2</a>
+                    <a href="?page={{ products.paginator.num_pages }}">
+                        <img src="{% static 'Vector 1 (2).svg' %}" alt=""></a>
+                {% endif %}
+            </span>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 
+{# <a href="?page=1">&laquo; first</a>#}
 
 {#{% url 'store:product_detail' %}?category={{ category.pk }}#}
 {#    <section class="product_store is-centered">#}

@@ -2,33 +2,56 @@
 {% load static %}
 
 
-{% block detail %}
+{% block detail %}<br><br><br><br><br><br><br>
     <div class="product_detail_title">
-        <h1 class="title">{{ product.title }}</h1>
+        <h1 class="title is-1 ">{{ product.title }}</h1>
     </div>
-    <div class="container ">
-        <p class="subtitle is-6 mt-3">Главная – Свитшоты - <span
+    <div class="container p_p">
+        <p class="subtitle is-6 mt-3">Главная - {{ product.category }} - <span
                 class="has-text-grey-light">{{ product.title }}</span></p>
     </div>
-    <div class="section product-detail">
-        <div class="columns is-flex is-align-items-center">
-            <div class="column">
-                <div class="box">
-                    <figure class="image product-detail-image">
+    <div class="section">
+        <div class="container product-detail">
+            <div class="columns is-flex is-align-items-center">
+                <div class="column">
+                    <figure class="is-4by5 image product-detail-image">
                         <img src="{{ product.image.url }}" alt="Placeholder image">
                     </figure>
                 </div>
-            </div>
-            <div class="column">
-                <div class="content">
-                    <p class="title is-size-3 has-text-info">{{ product.price }}</p>
-                    <p class="title is-size-5 has-text-grey-light">Выберите размер</p>
-                    <p class="title">Выберите цвет</p>
-                    <a href="" class="btn_color"></a>
-                    <a href=""></a>
-                    <a href="{% url 'store:products' %}" class="button is-danger">Добавить в корзину</a>
+                <div class="column">
+                    <div class="content">
+                        <p class="title is-size-3">{{ product.price }}</p>
+                        {% for review in reviews %}
+                            <p class="title is-size-5 has-text-grey-light">Выберите размер</p>
+                            <div>
+                                {{ review.size }}/5
+                            </div>
+                            <div class="count">
+                                <p class="title">Выберите цвет</p>
+                                <div>
+                                    {{ review.color }}/5
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <a href="{% url 'store:cart' %}?product={{ product.id }}" class="add_btn_cart">Добавить в
+                            корзину</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <section class="section">
+        <div class="container">
+            <div class="product_detail_title">
+                <h1 class="title is-1 ">Связанные товары</h1>
+            </div>
+        </div>
+    </section>
 {% endblock %}
+
+
+{#<a href="" class="btn_color"></a>#}
+{#<a href=""></a>#}

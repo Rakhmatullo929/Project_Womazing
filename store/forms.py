@@ -1,6 +1,6 @@
 from django import forms
 from .models import Application
-from .models import Order
+from .models import Order, Review, COLOR_CHOICES, SIZE_CHOICES
 
 
 class ApplicationForms(forms.ModelForm):
@@ -22,3 +22,19 @@ class OrderForm(forms.Form):
     class Meta:
         model = Order
         fields = ['name', 'phone', 'address', 'country', 'city', 'street', 'house', 'flat']
+
+
+class SizeForm(forms.ModelForm):
+    size = forms.ChoiceField(choices=SIZE_CHOICES, required=True)
+
+    class Meta:
+        model = Review
+        fields = ('size',)
+
+
+class ColorForm(forms.ModelForm):
+    color = forms.ChoiceField(choices=COLOR_CHOICES, required=True, label='COLOR')
+
+    class Meta:
+        model = Review
+        fields = ('color',)

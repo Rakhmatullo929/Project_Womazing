@@ -39,7 +39,7 @@
         <div class="columns">
             {% for product in products %}
                 <div class="column">
-                    <a href="" class="hover_link">
+                    <a href="{% url 'store:product_detail' product.pk %}" class="hover_link">
                         <img src="{{ product.image.url }}" alt="">
                     </a>
                     <br>

@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=30)
     price = models.CharField(max_length=10)
     image = models.FileField(null=True)
     category = models.ForeignKey('store.Category', default=None, on_delete=models.CASCADE)
@@ -78,3 +78,28 @@ class OrderProduct(models.Model):
 
     def __str__(self):
         return '%s x%s - %s' % (self.product, self.amount, self.order.customer.username)
+
+
+COLOR_CHOICES = [
+    (1, 'BROWN'),
+    (2, 'GREY'),
+    (3, 'RED'),
+    (4, 'YELLOW'),
+]
+
+SIZE_CHOICES = [
+    (1, 'S'),
+    (2, 'M'),
+    (3, 'L'),
+    (4, 'XL'),
+    (5, 'XLL'),
+]
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size = models.CharField(choices=SIZE_CHOICES, max_length=3, null=True)
+    color = models.PositiveSmallIntegerField(choices=COLOR_CHOICES, null=True)
+
+    def __str__(self):
+        return self.product

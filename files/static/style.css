@@ -392,6 +392,64 @@ td {
 }
 
 
+.pading{
+    font-family: Raleway, sans-serif;
+}
+
+
+.btn_shops {
+    padding: 1rem 3rem;
+    color: black;
+    border: 1px solid black;
+}
+
+
+.btn_shops:hover {
+    background: black;
+    color: white;
+}
+
+.btn_shops:focus {
+    background: black;
+    color: white;
+}
+
+.flex_-columns {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+}
+
+.flex_-column {
+    margin-left: 2rem;
+    padding-top: 3rem;
+}
+
+.product-detail{
+    padding-left: 3rem;
+}
+
+.product_detail_title{
+    padding-left: 10rem;
+    font-family: Raleway, sans-serif;
+}
+
+.p_p{
+    padding-left: 5rem;
+    font-family: Raleway, sans-serif;
+}
+.img_vector{
+    transform: rotatey(3rad);
+}
+
+.add_btn_cart{
+    padding: 1rem 3.7rem;
+    color: white;
+    background-color: #6E9C9F;
+}
+
+
 @media screen and (max-width: 1440px) {
     .main_img {
         position: absolute;
