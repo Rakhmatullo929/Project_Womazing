@@ -121,3 +121,15 @@ def create_order(request):
         'total_price': total_price,
         'amount': amount,
         'form': form})
+
+
+def order_success(request):
+    form = forms.OrderForm(request.POST or None)
+    is_success = False
+    if request.method == 'POST' and form.is_valid():
+        is_success = True
+        form.save()
+        form = forms.OrderForm()
+    return render(request, 'order_success.html', {'form': form, 'is_success': is_success})
+
+

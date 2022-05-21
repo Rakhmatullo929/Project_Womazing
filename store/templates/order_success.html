@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block success %}
+    <br><br><br><br><br><br><br>
+    <section class="section">
+        <div class="container pading order_section">
+            <h1 class="title is-1">Заказ получен</h1>
+            <p class="subtitle pl-2 is-6 mt-3">Главная – Оформление заказа - <span
+                    class="has-text-grey-light">Заказ получен</span></p>
+        </div>
+        <br><br><br><br><br>
+
+        <div class="columns">
+            <div class="column succesd">
+                <img src="{% static 'bi_file-check' %}" alt="">
+                <div>
+                    <p class="title is-4">Заказ успешно оформлен</p>
+                    <p class="subtitle is-4">Мы свяжемся с вами в ближайшее время!</p>
+                </div>
+            </div>
+            <div class="column">
+                <a href="{% url 'store:home' %}" class="btn__centered">Перейти на главную</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
