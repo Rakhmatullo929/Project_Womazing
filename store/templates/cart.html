@@ -2,71 +2,96 @@
 {% load static from static %}
 
 
-{% block cart %}<br><br><br><br>
-    <div class="card mb-4 p-4 has-text-weight-bold is-size-4">
-        <hr>
-        <div class="columns has-text-centered">
-            <div class="column">
-                <div class="content">Items: {{ total_quantity }}</div>
-            </div>
-            <div class="column">
-                <div class="content">Total: {{ total_price }} $</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card p-5">
-        <div class="content">
-            {% if cart_items %}
-                <table class="table has-text-centered">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in cart_items %}
-                        <td>
-                            <a href='{% url 'store:delete_cart_item' item.pk %}'
-                               style="font-size: 20px; color: black">
-                                <ion-icon name="trash-outline"></ion-icon>
-                            </a>
-                        </td>
+{% block cart %}<br><br><br><br><br><br><br>
+    <section class="section">
+        <div class="pading p-5">
+            <div class="content">
+                {% if cart_items %}
+                    <table class="table has-text-centered">
+                        <thead>
                         <tr>
-                            <td>
-                                <img src="{{ item.product.image.url }}" alt="" width="100" height="100">
-                            </td>
-                            <td>{{ item }}</td>
-                            <td>{{ item.product.price }} sum</td>
-                            <div class="columns is-vcentered is-centered">
-                                <div class="column is-1">
-                                    {{ item.quantity }}
-                                </div>
-                                <div class="column is-1">
-                                    <div class="quantity">
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
-                                            <h1 class="title">+</h1>
+                            <th>Товар</th>
+                            <th></th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Всего</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in cart_items %}
+                            <tr>
+                                <td>
+                                    <div class="level is-vcentered is-centered">
+                                        <a class="level-item" href='{% url 'store:delete_cart_item' item.pk %}'>
+                                            <img class="" src="{% static 'Vector 3.svg' %}" alt="">
                                         </a>
-                                        <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
-                                            <h1 class="title">-</h1>
-                                        </a>
+                                        <div class="level-item">
+                                            <img src="{{ item.product.image.url }}" alt="" width="100" height="100">
+                                        </div>
+                                        <div class="level-item">{{ item }}</div>
                                     </div>
+                                </td>
+                                <td></td>
+                                <td class="has-text-weight-medium is-vcentered">${{ item.product.price }}</td>
+                                <td class="is-vcentered">
+                                    <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
+                                        <h1 class="title item_color">+</h1>
+                                    </a>
+                                    {{ item.quantity }}
+                                    <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
+                                        <h1 class="title">-</h1>
+                                    </a>
+                                </td>
+                                <td class="has-text-weight-medium is-vcentered">{{ item.total_price }} $</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            </div>
+                        {% endfor %}
+                {% endif %}
+
+
+            <div class=" mb-4 p-4 has-text-weight-bold is-size-4">
+                <hr>
+                <div class="columns has-text-centered">
+                    <div class="column">
+                    </div>
+                    <div class="column">
+                        <div class="columns is-centered is-vcentered">
+                            <div class="column">
+                                <div class="notification has-background-warning-light">
+                                    <p>Итого: {{ total_price }}</p>
                                 </div>
                             </div>
-                        </tr>
-                        </tbody>
-                        </table>
+                            <div class="column">
+                                {% if cart_items %}
+                                    <a href="{% url 'store:create_order' %}" class="">
+                                        <p class="subtitle has-text-weight-normal btn_ordered p-5 is-large has-text-white">Оформить заказ</p>
+                                    </a>
+                                {% endif %}
+                            </div>
                         </div>
-                        <td>{{ item.total_price }} $</td>
-                    {% endfor %}
-                {% if cart_items %}
-                    <a href="{% url 'store:create_order' %}" class="button has-text-right is-info">Checkout</a>
-                {% endif %}
-            {% endif %}
-    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </section>
 {% endblock %}
+
+
+
+
+
+
+{#                        <div class="content">#}
+{#                            <span class="notification has-background-warning-light">Итого:#}
+{#                                <span class="mx-5">${{ total_price }}</span>#}
+{#                            </span>#}
+{#                            <span class="mx-5">#}
+{#                                {% if cart_items %}#}
+{#                                    <a href="{% url 'store:create_order' %}" class="btn_ordered has-text-weight-normal">Оформить заказ</a>#}
+{#                                {% endif %}#}
+{#                            </span>#}
+{#                        </div>#}

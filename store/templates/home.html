@@ -45,8 +45,10 @@
                     <br>
                     <br>
                     <div class="has-text-centered">
-                        <h1 class="title has-text-weight-medium is-5">{{ product.title }}</h1>
-                        <p class="price subtitle is-6 mt-4">{{ product.price }}</p>
+                        <a href="{% url 'store:product_detail' product.pk %}">
+                            <h1 class="title has-text-weight-medium is-5">{{ product.title }}</h1>
+                        </a>
+                        <p class="price subtitle is-6 mt-4">${{ product.price }}</p>
                     </div>
                 </div>
             {% endfor %}

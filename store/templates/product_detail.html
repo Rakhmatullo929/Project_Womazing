@@ -20,7 +20,7 @@
                 </div>
                 <div class="column">
                     <div class="content">
-                        <p class="title is-size-3">{{ product.price }}</p>
+                        <p class="title is-size-3">${{ product.price }}</p>
                         {% for review in reviews %}
                             <p class="title is-size-5 has-text-grey-light">Выберите размер</p>
                             <div>
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        <a href="{% url 'store:cart' %}?product={{ product.id }}" class="add_btn_cart">Добавить в
+                        <a href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}" class="add_btn_cart">Добавить в
                             корзину</a>
                     </div>
                 </div>

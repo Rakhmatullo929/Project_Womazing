@@ -6,7 +6,7 @@ from django.db import models
 
 class Product(models.Model):
     title = models.CharField(max_length=30)
-    price = models.CharField(max_length=10)
+    price = models.IntegerField()
     image = models.FileField(null=True)
     category = models.ForeignKey('store.Category', default=None, on_delete=models.CASCADE)
     type = models.ForeignKey('store.Type', default=None, on_delete=models.CASCADE)
@@ -49,7 +49,6 @@ class Application(models.Model):
 
 
 class CartItem(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 

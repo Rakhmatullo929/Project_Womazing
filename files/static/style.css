@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway, sans-serif;
 }
 
 
@@ -312,11 +312,13 @@ header.sticky {
 
 .s_sd {
     padding: 0 100px;
+    font-family: Raleway, sans-serif;
 }
 
 .buttons1 {
-    position: absolute;
-    right: 50%;
+    width: auto;
+    margin: auto;
+    font-family: Raleway, sans-serif;
 }
 
 .text {
@@ -333,7 +335,7 @@ td {
 
 
 .btn_ordered {
-    padding: 1.2rem 2.5rem;
+    /*padding: 1.2rem 2.5rem;*/
     background: #6E9C9F;
     color: white;
 }
@@ -449,6 +451,11 @@ td {
     background-color: #6E9C9F;
 }
 
+.item_color{
+    color: #6E9C9F;
+}
+
+
 
 @media screen and (max-width: 1440px) {
     .main_img {
@@ -483,4 +490,6 @@ td {
         left: 820px;
         top: 0;
     }
+
+    .
 }

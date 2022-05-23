@@ -27,7 +27,7 @@ def product_detail(request, pk):
         product = Product.objects.get(pk=product_id)
         cart_item = CartItem.objects.filter(product=product)
         if not cart_item:
-            cart_item = CartItem.objects.create(customer=request.user, product=product, quantity=1)
+            cart_item = CartItem.objects.create(product=product, quantity=1)
             cart_item.save()
             return redirect('store:shop')
         for item in cart_item:
@@ -49,10 +49,10 @@ def contact_order(request):
 def shop(request):
     category = request.GET.get('category')
     products = Product.objects.all()
+    products = products.filter(category=category) if category else products
     paginator = Paginator(products, 9)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
-    products = products.filter(category=category) if category else products
     return render(request, 'shop.html', {'products': products})
 
 
@@ -61,7 +61,7 @@ def about_brand(request):
 
 
 def cart(request):
-    cart_items = CartItem.objects.filter(customer=request.user)
+    cart_items = CartItem.objects.all()
     total_price = sum([item.total_price() for item in cart_items])
     total_quantity = sum([item.quantity for item in cart_items])
 
@@ -92,7 +92,7 @@ def edit_cart_item(request, pk):
 
 
 def create_order(request):
-    cart_items = CartItem.objects.filter(customer=request.user)
+    cart_items = CartItem.objects.all()
     total_price = sum([item.total_price() for item in cart_items])
     amount = sum([item.quantity for item in cart_items])
     form = forms.OrderForm(request.POST)
