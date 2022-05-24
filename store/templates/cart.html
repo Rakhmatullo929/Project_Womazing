@@ -61,13 +61,14 @@
                         <div class="columns is-centered is-vcentered">
                             <div class="column">
                                 <div class="notification has-background-warning-light">
-                                    <p>Итого: {{ total_price }}</p>
+                                    <p>Итого: <span class="mx-6">${{ total_price }}</span></p>
                                 </div>
                             </div>
                             <div class="column">
                                 {% if cart_items %}
                                     <a href="{% url 'store:create_order' %}" class="">
-                                        <p class="subtitle has-text-weight-normal btn_ordered p-5 is-large has-text-white">Оформить заказ</p>
+                                        <p class="subtitle has-text-weight-normal btn_ordered p-5 is-large has-text-white">
+                                            Оформить заказ</p>
                                     </a>
                                 {% endif %}
                             </div>

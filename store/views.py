@@ -99,8 +99,14 @@ def create_order(request):
 
     if request.method == 'POST' and form.is_valid():
         order = Order.objects.create(
-            address=request.POST.get('address'),
+            name=request.POST.get('name'),
+            e_mail=request.POST.get('E-mail'),
             phone=request.POST.get('phone'),
+            country=request.POST.get('country'),
+            city=request.POST.get('city'),
+            street=request.POST.get('street'),
+            house=request.POST.get('house'),
+            flat=request.POST.get('flat'),
             total_price=total_price,
             customer=request.user
         )
@@ -131,5 +137,3 @@ def order_success(request):
         form.save()
         form = forms.OrderForm()
     return render(request, 'order_success.html', {'form': form, 'is_success': is_success})
-
-

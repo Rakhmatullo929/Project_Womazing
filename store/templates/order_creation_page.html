@@ -41,11 +41,11 @@
                         {% for item in cart_items %}
                             <tr>
                                 <td>{{ item }}</td>
-                                <td>{{ item.product.price }}</td>
+                                <td>${{ item.product.price }}</td>
                             </tr>
                             <tr>
                                 <td>x {{ item.quantity }}</td>
-                                <td>{{ item.total_price }}</td>
+                                <td>${{ item.total_price }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
