@@ -33,7 +33,8 @@ def product_detail(request, pk):
         for item in cart_item:
             item.quantity += 1
             item.save()
-    return render(request, 'product_detail.html', {'product': product})
+    form = forms.RateForm()
+    return render(request, 'product_detail.html', {'product': product, 'form':form})
 
 
 def contact_order(request):
@@ -66,13 +67,13 @@ def cart(request):
     total_quantity = sum([item.quantity for item in cart_items])
 
     return render(request, 'cart.html',
-                  {'cart_items': cart_items, 'total_quantity': total_quantity, 'total_price': total_price}
-                  )
+                  {'cart_items': cart_items, 'total_quantity': total_quantity, 'total_price': total_price})
 
 
 def delete_cart_item(request, pk):
-    cart_item = CartItem.objects.get(pk=pk).delete()
-    return redirect('store:cart', {'cart_item': cart_item})
+    cart_item = CartItem.objects.get(pk=pk)
+    cart_item.delete()
+    return redirect('store:cart')
 
 
 def edit_cart_item(request, pk):
@@ -108,7 +109,6 @@ def create_order(request):
             house=request.POST.get('house'),
             flat=request.POST.get('flat'),
             total_price=total_price,
-            customer=request.user
         )
         for cart_item in cart_items:
             OrderProduct.objects.create(
@@ -117,10 +117,7 @@ def create_order(request):
                 amount=cart_item.quantity,
                 total=cart_item.total_price(),
             )
-
-        cart_items.delete()
-        return redirect('store:cart')
-
+        return redirect('store:success')
     form = forms.OrderForm()
     return render(request, 'order_creation_page.html', {
         'cart_items': cart_items,
@@ -130,10 +127,4 @@ def create_order(request):
 
 
 def order_success(request):
-    form = forms.OrderForm(request.POST or None)
-    is_success = False
-    if request.method == 'POST' and form.is_valid():
-        is_success = True
-        form.save()
-        form = forms.OrderForm()
-    return render(request, 'order_success.html', {'form': form, 'is_success': is_success})
+    return render(request, 'order_success.html')

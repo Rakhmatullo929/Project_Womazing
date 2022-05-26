@@ -11,18 +11,24 @@
                     class="has-text-grey-light">Заказ получен</span></p>
         </div>
         <br><br><br><br><br>
-
-        <div class="columns">
-            <div class="column succesd">
-                <img src="{% static 'bi_file-check' %}" alt="">
-                <div>
-                    <p class="title is-4">Заказ успешно оформлен</p>
-                    <p class="subtitle is-4">Мы свяжемся с вами в ближайшее время!</p>
+        <section class="section">
+            <div class="container pading succesd">
+                <div class="columns">
+                    <div class="column is-1">
+                        <figure class="image is-128x128">
+                            <img src="{% static 'bi_file-check.svg' %}" alt="">
+                        </figure>
+                    </div>
+                    <div class="column mx-4"><br>
+                        <p class="title serv pt-3 is-5">Заказ успешно оформлен</p>
+                        <p class="subtitle serv pt-3 is-6">Мы свяжемся с вами в ближайшее время!</p>
+                    </div>
+                    <div class="column is-4"><br><br>
+                        <a href="{% url 'store:home' %}" class="btn__centered">Перейти на главную</a>
+                    </div>
                 </div>
             </div>
-            <div class="column">
-                <a href="{% url 'store:home' %}" class="btn__centered">Перейти на главную</a>
-            </div>
-        </div>
+        </section>
+
     </section>
 {% endblock %}

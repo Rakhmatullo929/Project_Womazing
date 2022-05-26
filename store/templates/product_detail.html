@@ -19,22 +19,37 @@
                     </figure>
                 </div>
                 <div class="column">
-                    <div class="content">
-                        <p class="title is-size-3">${{ product.price }}</p>
-                        {% for review in reviews %}
-                            <p class="title is-size-5 has-text-grey-light">Выберите размер</p>
-                            <div>
-                                {{ review.size }}/5
-                            </div>
-                            <div class="count">
-                                <p class="title">Выберите цвет</p>
-                                <div>
-                                    {{ review.color }}/5
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <a href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}" class="add_btn_cart">Добавить в
-                            корзину</a>
+                    <div class="content" style="font-family: 'Raleway', sans-serif">
+                        <p class="title is-size-3">${{ product.price }}</p><br><br>
+                        <form action="{% url 'store:product_detail' product.pk %}" method="post"
+                              style="padding-left: 1rem">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                {% if field.name == 'rate' %}
+                                    <div class="columns">
+                                        <div class="column">
+                                            <label for="{{ field.id_for_label }}"
+                                                   class=title>{{ field.label }}</label>
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="columns">
+                                        <div class="column">
+                                            <label for="{{ field.id_for_label }}" class="title">
+                                                {{ field.label }}
+                                            </label><br>
+                                            <div class="fields">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </form>
+                        <br>
+                        <a href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"
+                           class="add_btn_cart">Добавить в корзину</a>
                     </div>
                 </div>
             </div>

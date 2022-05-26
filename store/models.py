@@ -60,10 +60,15 @@ class CartItem(models.Model):
 
 
 class Order(models.Model):
-    address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=True)
+    e_mail = models.EmailField(null=True)
+    phone = models.CharField(max_length=13, null=True)
+    country = models.CharField(max_length=50, null=True)
+    city = models.CharField(max_length=50, null=True)
+    street = models.CharField(max_length=50, null=True)
+    house = models.CharField(max_length=50, null=True)
+    flat = models.CharField(max_length=50, null=True)
     total_price = models.IntegerField()
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return 'Order # %s' % (str(self.id))

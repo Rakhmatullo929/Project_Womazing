@@ -28,7 +28,9 @@
                 <a href="{% url 'store:shop' %}" class="black_btn_nav">Магазин</a>
                 <a href="{% url 'store:about_brand' %}" class="black_btn_nav">О бренде</a>
                 <a href="{% url 'store:contact_order' %}" class="black_btn_nav_cont">Контакты</a>
-                <img class="phone_logo" onclick="toggleModal()" src="{% static 'telephone1.svg' %}" alt="">
+                <a href="" class="phone_logo js-modal-trigger" data-target="modal-js-example">
+                    <img src="{% static 'telephone1.svg' %}" alt="">
+                </a>
                 <a href="" class="number_phone">+7(495)823-54-12</a>
                 <a class="shopping_bags" href="{% url 'store:cart' %}">
                     <img src="{% static 'shopping-bags1.svg' %}" alt="">
@@ -36,12 +38,69 @@
             </div>
         </menu>
     </section>
+    <div class="modal">
+        <div class="modal-background backcolor"></div>
+        <div class="modal-content">
+            <section class="modal-card-body">
+                <!-- Content ... -->
+                <p class="modal-card-title has-text-centered">Заказать обратный звонок</p>
+                <form method="post" class="form">
+                    <div class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <section class="modal-card-body">
+                                <!-- Content ... -->
+                                <p class="modal-card-title has-text-centered">Заказать обратный звонок</p>
+                                <div class="field">
+                                    <label class="label has-text-weight-medium">Имя</label>
+                                    <div class="control">
+                                        <label>
+                                            {{ form.name }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">E-mail</label>
+                                    <div class="control">
+                                        <label>
+                                            {{ form.email }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Телефон</label>
+                                    <div class="control">
+                                        <label>
+                                            {{ form.number }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="has-text-centered">
+                                    <a href="" class="btn has-text-centered" onclick="toggleModal()">Заказать товар</a>
+                                </div>
+                                <br>
+                            </section>
+                            <button aria-label="close" class="modal-close is-large" onclick="toggleModal()"></button>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button class="btn_submit_form">Отправить</button>
+                </form>
+            </section>
+            <button aria-label="close" class="modal-close is-large" onclick="toggleModal()"></button>
+        </div>
+    </div>
 </header>
+<!--Модальное окно-->
+
+
+
+
 
 
 {% block success %}
 {% endblock %}
-
 
 {% block content %}
 {% endblock %}
@@ -60,6 +119,8 @@
 
 {% block cart %}
 {% endblock %}
+
+
 
 <footer class="footer has-background-warning-light is-6">
     <div class="container">
@@ -111,9 +172,50 @@
 
 
 <script>
-    let toggleModal = () => {
-        document.querySelector('.modal').classList.toggle('is-active')
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            const e = event || window.event;
+
+            if (e.keyCode === 27) { // Escape key
+                closeAllModals();
+            }
+        });
+    });
 </script>
 
 <script type="module"

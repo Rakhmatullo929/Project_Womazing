@@ -24,17 +24,10 @@ class OrderForm(forms.Form):
         fields = ['name', 'phone', 'address', 'country', 'city', 'street', 'house', 'flat']
 
 
-class SizeForm(forms.ModelForm):
-    size = forms.ChoiceField(choices=SIZE_CHOICES, required=True)
+class RateForm(forms.ModelForm):
+    size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio'}), label='Выберите размер')
+    color = forms.ChoiceField(choices=COLOR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio'}), label='Выберите цвет')
 
     class Meta:
         model = Review
-        fields = ('size',)
-
-
-class ColorForm(forms.ModelForm):
-    color = forms.ChoiceField(choices=COLOR_CHOICES, required=True, label='COLOR')
-
-    class Meta:
-        model = Review
-        fields = ('color',)
+        fields = ('size', 'color')
