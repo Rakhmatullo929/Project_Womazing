@@ -290,7 +290,12 @@ header.sticky {
     display: inline-block;
     position: relative;
     line-height: 0;
-    transition: 1s ease-in-out;
+}
+
+.hover_link:after {
+    content: "";
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .hover_link:hover:after {
@@ -386,6 +391,20 @@ td {
     padding: 20px;
 }
 
+
+.counter-display{
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+
+.size_style {
+    border: 1px solid #000;
+}
+
+
 .form label {
     color: black;
     font-size: 17px;
@@ -470,16 +489,20 @@ td {
 }
 
 .product-detail {
-    padding-left: 3rem;
+    padding-left: 9rem;
 }
 
 .product_detail_title {
-    padding-left: 10rem;
+    padding-left: 15.7rem;
     font-family: Raleway, sans-serif;
 }
 
+.product_detail_t {
+    padding-left: 10.5rem;
+}
+
 .p_p {
-    padding-left: 5rem;
+    padding-left: 10.5rem;
     font-family: Raleway, sans-serif;
 }
 

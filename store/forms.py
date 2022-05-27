@@ -1,5 +1,5 @@
 from django import forms
-from .models import Application
+from .models import Application, Feedback
 from .models import Order, Review, COLOR_CHOICES, SIZE_CHOICES
 
 
@@ -25,9 +25,17 @@ class OrderForm(forms.Form):
 
 
 class RateForm(forms.ModelForm):
-    size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio'}), label='Выберите размер')
-    color = forms.ChoiceField(choices=COLOR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio'}), label='Выберите цвет')
+    size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio '}),
+                             label='Выберите размер')
+    color = forms.ChoiceField(choices=COLOR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio color_style '}),
+                              label='Выберите цвет')
 
     class Meta:
         model = Review
         fields = ('size', 'color')
+
+
+class FeedbackForms(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = {'client_name', 'client_email', 'client_number'}

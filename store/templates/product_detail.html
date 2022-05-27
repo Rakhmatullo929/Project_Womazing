@@ -30,7 +30,7 @@
                                         <div class="column">
                                             <label for="{{ field.id_for_label }}"
                                                    class=title>{{ field.label }}</label>
-                                            {{ field }}
+                                            <div class="size_style">{{ field }}</div>
                                         </div>
                                     </div>
                                 {% else %}
@@ -39,32 +39,61 @@
                                             <label for="{{ field.id_for_label }}" class="title">
                                                 {{ field.label }}
                                             </label><br>
-                                            <div class="fields">
+                                            <div class="fields" class="size_style">
                                                 {{ field }}
                                             </div>
                                         </div>
                                     </div>
                                 {% endif %}
                             {% endfor %}
+                            <div class="columns">
+                                <div class="column">
+                                    <input type="number" min="1" class="counter-display" value="1">
+                                </div>
+                                <div class="column">
+                                </div>
+                            </div>
                         </form>
                         <br>
                         <a href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"
                            class="add_btn_cart">Добавить в корзину</a>
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <section class="section">
+        <br><br><br><br>
         <div class="container">
-            <div class="product_detail_title">
-                <h1 class="title is-1 ">Связанные товары</h1>
+            <div class="product_detail_t">
+                <h1 class="title is-1 has-text-weight-normal ">Связанные товары</h1><br>
+            </div>
+
+            <div class="container" style="padding-left: 9rem">
+                <div class="flex">
+                    {% for product in products %}
+                        <div class="flex-box has-text-centered">
+                            <a href="{% url 'store:product_detail' product.pk %}" class="hover_link">
+                                <img src="{{ product.image.url }}" alt="">
+                            </a>
+                            <br>
+                            <br>
+                            <div>
+                                <a href="{% url 'store:product_detail' product.pk %}">
+                                    <h1 class="title has-text-weight-medium is-5">{{ product.title }}</h1>
+                                </a>
+                                <p class="price subtitle is-6 mt-4">${{ product.price }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <
+
+
+
+
 {% endblock %}
 
 

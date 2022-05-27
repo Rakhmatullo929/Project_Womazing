@@ -107,3 +107,10 @@ class Review(models.Model):
 
     def __str__(self):
         return self.product
+
+
+class Feedback(models.Model):
+    client_name = models.CharField(max_length=30, null=True)
+    client_email = models.EmailField(null=True)
+    client_number = models.CharField(max_length=30, null=True)
+

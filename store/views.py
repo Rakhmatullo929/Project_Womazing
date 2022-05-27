@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from store import forms
@@ -5,10 +6,6 @@ from .models import *
 
 
 # Create your views here.
-
-
-def base_layout(request):
-    return render(request, 'base_layout.html', )
 
 
 def home(request):
@@ -22,6 +19,7 @@ def home(request):
 
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
+    products = Product.objects.filter()[:2]
     product_id = request.GET.get('product')
     if product_id:
         product = Product.objects.get(pk=product_id)
@@ -29,12 +27,13 @@ def product_detail(request, pk):
         if not cart_item:
             cart_item = CartItem.objects.create(product=product, quantity=1)
             cart_item.save()
+            print('+++')
             return redirect('store:shop')
         for item in cart_item:
             item.quantity += 1
             item.save()
     form = forms.RateForm()
-    return render(request, 'product_detail.html', {'product': product, 'form':form})
+    return render(request, 'product_detail.html', {'product': product, 'form': form, 'products': products})
 
 
 def contact_order(request):
@@ -90,6 +89,23 @@ def edit_cart_item(request, pk):
     cart_item.quantity += 1
     cart_item.save()
     return redirect('store:cart')
+
+
+def edit_quantity_product(request, pk):
+    product_item = CartItem.objects.get(pk=pk)
+    action = request.GET.get('action')
+
+    if action == 'take' and product_item.quantity > 0:
+        if product_item.quantity == 1:
+            product_item.delete()
+            print('+++')
+            return redirect('store:product_detail')
+        product_item.quantity -= 1
+        print('++')
+        return redirect('store:product_detail')
+    print('+')
+    product_item.quantity += 1
+    return redirect('store:product_detail')
 
 
 def create_order(request):
