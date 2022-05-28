@@ -1,6 +1,6 @@
 from django import forms
-from .models import Application, Feedback
-from .models import Order, Review, COLOR_CHOICES, SIZE_CHOICES
+from .models import Application, Feedback, CartItem
+from .models import Order, COLOR_CHOICES, SIZE_CHOICES
 
 
 class ApplicationForms(forms.ModelForm):
@@ -31,7 +31,7 @@ class RateForm(forms.ModelForm):
                               label='Выберите цвет')
 
     class Meta:
-        model = Review
+        model = CartItem
         fields = ('size', 'color')
 
 

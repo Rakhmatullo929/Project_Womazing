@@ -48,9 +48,27 @@ class Application(models.Model):
         return F'{self.name} {self.email} {self.number} {self.message}'
 
 
+COLOR_CHOICES = [
+    (1, 'BROWN'),
+    (2, 'GREY'),
+    (3, 'RED'),
+    (4, 'YELLOW'),
+]
+
+SIZE_CHOICES = [
+    ('s', 'S'),
+    ('m', 'M'),
+    ('l', 'L'),
+    ('xl', 'XL'),
+    ('xll', 'XLL'),
+]
+
+
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+    size = models.CharField(choices=SIZE_CHOICES, max_length=3, null=True)
+    color = models.PositiveSmallIntegerField(choices=COLOR_CHOICES, null=True)
 
     def __str__(self):
         return self.product.title
@@ -81,32 +99,7 @@ class OrderProduct(models.Model):
     total = models.IntegerField()
 
     def __str__(self):
-        return '%s x%s - %s' % (self.product, self.amount, self.order.customer.username)
-
-
-COLOR_CHOICES = [
-    (1, 'BROWN'),
-    (2, 'GREY'),
-    (3, 'RED'),
-    (4, 'YELLOW'),
-]
-
-SIZE_CHOICES = [
-    (1, 'S'),
-    (2, 'M'),
-    (3, 'L'),
-    (4, 'XL'),
-    (5, 'XLL'),
-]
-
-
-class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    size = models.CharField(choices=SIZE_CHOICES, max_length=3, null=True)
-    color = models.PositiveSmallIntegerField(choices=COLOR_CHOICES, null=True)
-
-    def __str__(self):
-        return self.product
+        return '%s x%s - %s' % (self.product, self.amount, self.order)
 
 
 class Feedback(models.Model):
@@ -114,3 +107,8 @@ class Feedback(models.Model):
     client_email = models.EmailField(null=True)
     client_number = models.CharField(max_length=30, null=True)
 
+# class Review(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.product

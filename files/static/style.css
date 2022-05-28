@@ -400,8 +400,10 @@ td {
 }
 
 
-.size_style {
+.color_style {
     border: 1px solid #000;
+    padding: 1rem 3rem;
+    color: black;
 }
 
 

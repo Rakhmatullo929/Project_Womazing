@@ -22,7 +22,8 @@
                         </div>
                         {% for field in form %}
                             <div class="field">
-                                <label for="{{ field.id_for_label }}" class="label has-text-weight-medium">{{ field.label }}</label>
+                                <label for="{{ field.id_for_label }}"
+                                       class="label has-text-weight-medium">{{ field.label }}</label>
                                 {{ field }}
                             </div>
                         {% endfor %}<br>
@@ -49,7 +50,8 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <div class="notification is-2 has-background-warning-light">Итого {{ total_price }} </div>
+                    <div class="notification is-2 has-text-weight-bold pading has-background-warning-light">Итого: <span
+                            class="title is-4" style="padding-left: 4rem">${{ total_price }}</span></div>
                 </div>
             </div>
         </div>

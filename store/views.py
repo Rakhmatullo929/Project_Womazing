@@ -2,6 +2,7 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from store import forms
+from .forms import RateForm
 from .models import *
 
 
@@ -20,20 +21,22 @@ def home(request):
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
     products = Product.objects.filter()[:2]
-    product_id = request.GET.get('product')
-    if product_id:
-        product = Product.objects.get(pk=product_id)
-        cart_item = CartItem.objects.filter(product=product)
-        if not cart_item:
-            cart_item = CartItem.objects.create(product=product, quantity=1)
-            cart_item.save()
-            print('+++')
-            return redirect('store:shop')
-        for item in cart_item:
-            item.quantity += 1
-            item.save()
-    form = forms.RateForm()
-    return render(request, 'product_detail.html', {'product': product, 'form': form, 'products': products})
+    cart_item = CartItem.objects.filter(product=product)
+    form_rating = RateForm(request.POST or None)
+    if not cart_item and request.method == 'POST' and form_rating.is_valid():
+        form_rating = CartItem.objects.create(
+            product=product,
+            quantity=1,
+            size=request.POST.get('size'),
+            color=request.POST.get('color'),
+        )
+        form_rating.save()
+        return redirect('store:shop')
+    for item in cart_item:
+        item.quantity += 1
+        item.save()
+    form_rating = RateForm()
+    return render(request, 'product_detail.html', {'product': product, 'form_rating': form_rating, 'products': products})
 
 
 def contact_order(request):
