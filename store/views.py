@@ -36,7 +36,8 @@ def product_detail(request, pk):
         item.quantity += 1
         item.save()
     form_rating = RateForm()
-    return render(request, 'product_detail.html', {'product': product, 'form_rating': form_rating, 'products': products})
+    return render(request, 'product_detail.html',
+                  {'product': product, 'form_rating': form_rating, 'products': products})
 
 
 def contact_order(request):
@@ -147,3 +148,26 @@ def create_order(request):
 
 def order_success(request):
     return render(request, 'order_success.html')
+
+
+def base_layout(request):
+    form = forms.FeedbackForms(request.POST or None)
+    is_success = False
+    if request.method == 'POST' and form.is_valid():
+        is_success = True
+        form.save()
+        form = forms.FeedbackForms()
+    return render(request, 'base_layout.html', {'form': form, 'is_success': is_success})
+
+
+def get_contact(request):
+    name = request.GET.get('name')
+    email = request.GET.get('email')
+    telephone = request.GET.get('telephone')
+    Feedback.objects.create(
+        client_name=name,
+        client_email=email,
+        client_number=telephone
+    )
+    return redirect('store:home')
+

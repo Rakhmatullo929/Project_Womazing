@@ -13,4 +13,5 @@ urlpatterns = [
     path('edit_quantity_product/<pk>', views.edit_quantity_product, name='edit_quantity_product'),
     path('cart/create_order', views.create_order, name='create_order'),
     path('create_oder/success', views.order_success, name='success'),
+    path('get_contact/', views.get_contact, name='get_contact_url')
 ]

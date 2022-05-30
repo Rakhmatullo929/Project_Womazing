@@ -107,6 +107,9 @@ class Feedback(models.Model):
     client_email = models.EmailField(null=True)
     client_number = models.CharField(max_length=30, null=True)
 
+    def __str__(self):
+        return F'{self.client_name} {self.client_email} {self.client_number}'
+
 # class Review(models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 #

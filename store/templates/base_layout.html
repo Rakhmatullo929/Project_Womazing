@@ -28,10 +28,10 @@
                 <a href="{% url 'store:shop' %}" class="black_btn_nav">Магазин</a>
                 <a href="{% url 'store:about_brand' %}" class="black_btn_nav">О бренде</a>
                 <a href="{% url 'store:contact_order' %}" class="black_btn_nav_cont">Контакты</a>
-                <a href="" class="phone_logo">
+                <a class="js-modal-trigger phone_logo" data-target="modal-js-example">
                     <img src="{% static 'telephone1.svg' %}" alt="">
                 </a>
-                <a href="" class="number_phone">+7(495)823-54-12</a>
+                <a href="tel:+7(495)823-54-12" class="number_phone">+7(495)823-54-12</a>
                 <a class="shopping_bags" href="{% url 'store:cart' %}">
                     <img src="{% static 'shopping-bags1.svg' %}" alt="">
 
@@ -39,6 +39,44 @@
             </div>
         </menu>
     </section>
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content is-fullwidth">
+            <div class="box">
+                <form method="get" class="form" action="{% url 'store:get_contact_url' %}">
+                    <h1 class="title has-text-centered has-text-weight-normal">Заказать обратный звонок</h1>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">Имя</label>
+                        <div class="control">
+                            <input type="text" name="username">
+                        </div>
+                    </div>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">E-mail</label>
+                        <div class="control">
+                            <input type="text" name="email">
+                        </div>
+                    </div>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">Телефон</label>
+                        <div class="control">
+                            <input type="text" name="telephone">
+                        </div>
+                    </div>
+                    <div class="has-text-centered">
+                        <button class="btn_submit_form is-centered">Отправить</button>
+                    </div>
+                    {% if is_succes %}
+                        <h1 class="title">Отлично! Мы скоро вам перезвоним.</h1>
+                        <a href="{% url 'store:home' %}" class="btn__centered">Закрыть</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 </header>
 
 
@@ -124,5 +162,74 @@
 <script type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            const e = event || window.event;
+
+            if (e.keyCode === 27) { // Escape key
+                closeAllModals();
+            }
+        });
+    });
+</script>
+<script type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    let radio = document.querySelectorAll(".radio label",)
+
+    radio.forEach(button => {
+        button.addEventListener('click', () => {
+            radio.forEach(elem => elem.classList.remove('b-black'))
+            button.classList.add('b-black')
+        })
+    })
+
+    let radio_select = document.querySelectorAll(".radio_select label",)
+
+    radio_select.forEach(button => {
+        button.addEventListener('click', () => {
+            radio_select.forEach(elem => elem.classList.remove('red'))
+            button.classList.add('red')
+        })
+    })
+</script>
 </body>
 </html>

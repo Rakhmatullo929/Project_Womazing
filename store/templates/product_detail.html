@@ -30,14 +30,14 @@
                                 {% if field.name == 'rate' %}
                                     <div class="columns">
                                         <div class="column">
-                                            <label for="{{ field.id_for_label }}"
+                                            <label for="{{field.id_for_label }}"
                                                    class=title>{{ field.label }}</label>
                                             {{ field }}
                                         </div>
                                     </div>
                                 {% else %}
                                     <div class="columns">
-                                        <div class="column">
+                                        <div class="column ">
                                             <label for="{{ field.id_for_label }}" class="title">
                                                 {{ field.label }}
                                             </label><br>
@@ -49,7 +49,7 @@
                                 {% endif %}
                             {% endfor %}
                             <button type="submit" style="border: none"
-                                                                   href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"
+{#                                                                   href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"#}
                                     class="add_btn_cart">Добавить в корзину
                             </button>
                         </form>

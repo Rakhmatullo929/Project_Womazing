@@ -27,8 +27,7 @@ class OrderForm(forms.Form):
 class RateForm(forms.ModelForm):
     size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio '}),
                              label='Выберите размер')
-    color = forms.ChoiceField(choices=COLOR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio color_style '}),
-                              label='Выберите цвет')
+    color = forms.ChoiceField(choices=COLOR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_select'}), label='Выберите цвет')
 
     class Meta:
         model = CartItem
