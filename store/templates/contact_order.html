@@ -58,6 +58,7 @@
                 <div class="columns">
                     <div class="column is-3">
                         <form method="post" class="form">
+                        {% csrf_token %}
                             <div class="field">
                                 <label class="label has-text-weight-medium">Имя</label>
                                 <div class="control">

@@ -49,7 +49,7 @@
                     <div class="field has-text-centered">
                         <label class="label has-text-weight-medium">Имя</label>
                         <div class="control">
-                            <input type="text" name="username">
+                            <input type="text" name="name">
                         </div>
                     </div>
                     <div class="field has-text-centered">
@@ -213,11 +213,11 @@
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
-    let radio = document.querySelectorAll(".radio label",)
+    let radio_selects = document.querySelectorAll(".radio_selects label",)
 
-    radio.forEach(button => {
+    radio_selects.forEach(button => {
         button.addEventListener('click', () => {
-            radio.forEach(elem => elem.classList.remove('b-black'))
+            radio_selects.forEach(elem => elem.classList.remove('b-black'))
             button.classList.add('b-black')
         })
     })
@@ -226,8 +226,21 @@
 
     radio_select.forEach(button => {
         button.addEventListener('click', () => {
-            radio_select.forEach(elem => elem.classList.remove('red'))
-            button.classList.add('red')
+            radio_select.forEach(elem => elem.classList.remove('bb_black'))
+            button.classList.add('bb_black')
+        })
+    })
+
+
+</script>
+
+<script>
+    let btn_shops = document.querySelectorAll(".btn_shops ",)
+
+    btn_shops.forEach(button => {
+        button.addEventListener('click', () => {
+            btn_shops.forEach(elem => elem.classList.remove('w_black'))
+            button.classList.add('w_black')
         })
     })
 </script>

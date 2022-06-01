@@ -17,9 +17,18 @@
                 {% categories %}
             </div>
             <br><br><br>
-            <div>
-                <p class=" is-small"><span class="ml-3 has-text-grey-light">Показано: 9 из 12 товаров</span></p>
-            </div>
+            {% if products.has_next %}
+                <div>
+                    <p class=" is-small"><span class="ml-3 has-text-grey-light">Показано: 9 из 16 товаров</span></p>
+                </div>
+            {% endif %}
+
+            {% if products.has_previous %}
+                <div>
+                    <p class=" is-small"><span class="ml-3 has-text-grey-light">Показано: 16 из 16 товаров</span></p>
+                </div>
+            {% endif %}
+
         </div>
         <br><br>
         <div class="flex_-columns">
@@ -40,9 +49,17 @@
             {% endfor %}
         </div>
         <br>
-        <div class="s_sd">
-            <p class=" is-small"><span class="ml-5 has-text-grey-light">Показано: 9 из 12 товаров</span></p>
-        </div>
+        {% if products.has_previous %}
+            <div class="s_sd">
+                <p class=" is-small"><span class="ml-5 has-text-grey-light">Показано: 16 из 16 товаров</span></p>
+            </div>
+        {% endif %}
+        {% if products.has_next %}
+            <div class="s_sd">
+                <p class=" is-small"><span class="ml-5 has-text-grey-light">Показано: 9 из 16 товаров</span></p>
+            </div>
+        {% endif %}
+
         <br><br><br>
         <div class="buttons1">
             <div class="pagination">
